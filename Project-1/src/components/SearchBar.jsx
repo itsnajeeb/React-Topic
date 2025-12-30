@@ -1,13 +1,17 @@
 import React from 'react'
 import { useState } from 'react';
-
+import { useDispatch } from 'react-redux'
+import { setQuery } from '../redux/features/searchSlice';
 const SearchBar = () => {
+  const dispatch = useDispatch();
   const [text, setText] = useState('');
 
   const submitHandler = (e) => {
     e.preventDefault()
-    console.log(text);
-    
+    // console.log(text);
+    dispatch(setQuery(text))
+    setText('')
+
   }
   return (
     <div className='bg-gray-900 w-full py-14 px-32'>
